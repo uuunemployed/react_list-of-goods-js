@@ -94,7 +94,7 @@ export const App = () => {
         {!arraysAreEqual(visibleGoods, goodsFromServer) && (
           <button
             type="button"
-            className={`button is-danger ${sortParam === '' ? '' : 'is-light'}`}
+            className={`button is-danger ${sortParam === '' && !isReversed ? '' : 'is-light'}`}
             onClick={() => {
               setSortParam('');
               setIsReversed(false);
@@ -107,7 +107,9 @@ export const App = () => {
 
       <ul>
         {visibleGoods.map(good => (
-          <li data-cy="Good">{good}</li>
+          <li key={good} data-cy="Good">
+            {good}
+          </li>
         ))}
       </ul>
     </div>
